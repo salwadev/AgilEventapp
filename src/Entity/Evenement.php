@@ -20,7 +20,9 @@ class Evenement
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $nom;
+
+
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class)
@@ -50,24 +52,56 @@ class Evenement
      * @ORM\Column(type="date", nullable=true)
      */
     private $date;
+    /**
+    * @ORM\ManyToOne(targetEntity=Semaine::class)
+    */
+    private $semaine;
+
+   /**
+    * @ORM\ManyToOne(targetEntity=Jour::class)
+    */
+    private $jour;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getNom(): ?string
     {
-        return $this->name;
+        return $this->nom;
     }
 
-    public function setName(string $name): self
+    public function setNom(string $nom): self
     {
-        $this->name = $name;
+        $this->nom = $nom;
 
         return $this;
     }
 
+    public function getSemaine(): ?Semaine
+       {
+           return $this->semaine;
+       }
+
+       public function setSemaine(?Semaine $semaine): self
+       {
+           $this->semaine = $semaine;
+
+           return $this;
+       }
+
+       public function getJour(): ?Jour
+       {
+           return $this->jour;
+       }
+
+       public function setJour(?Jour $jour): self
+       {
+           $this->jour = $jour;
+
+           return $this;
+       }
     public function getCategory(): ?Category
     {
         return $this->category;

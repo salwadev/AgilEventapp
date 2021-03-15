@@ -20,7 +20,7 @@ class Location
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -32,14 +32,14 @@ class Location
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getNom(): ?string
     {
-        return $this->name;
+        return $this->nom;
     }
 
-    public function setName(string $name): self
+    public function setNom(string $nom): self
     {
-        $this->name = $name;
+        $this->nom = $nom;
 
         return $this;
     }
@@ -54,5 +54,9 @@ class Location
         $this->designation = $designation;
 
         return $this;
+    }
+    public function __toString()
+    {
+        return $this->nom;
     }
 }

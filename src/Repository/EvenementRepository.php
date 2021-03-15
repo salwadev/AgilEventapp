@@ -19,6 +19,19 @@ class EvenementRepository extends ServiceEntityRepository
         parent::__construct($registry, Evenement::class);
     }
 
+    public function findAllArray()
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            'SELECT e,c
+            FROM App\Entity\Evenement e
+            LEFT JOIN e.concerne c'
+        );
+
+        return $query->getArrayResult();
+    }
+
+
     // /**
     //  * @return Evenement[] Returns an array of Evenement objects
     //  */
